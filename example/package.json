@@ -1,0 +1,42 @@
+{
+  "name": "quasar-teest",
+  "version": "1.0.0",
+  "description": "A Quasar Framework app",
+  "productName": "Quasar App",
+  "cordovaId": "org.cordova.quasar.app",
+  "author": "zhuchentong <2037630@163.com>",
+  "private": true,
+  "scripts": {
+    "dev": "quasar dev",
+    "dev:electron": "quasar dev -m electron",
+    "test": "echo \"No test specified\" && exit 0"
+  },
+  "dependencies": {
+    "axios": "^0.18.0",
+    "reflect-metadata": "^0.1.12",
+    "uuidjs": "^4.0.3",
+    "vue-inject": "^2.1.0",
+    "vuelidate": "^0.7.4",
+    "vuex-persistedstate": "^2.5.4"
+  },
+  "devDependencies": {
+    "@types/webpack-env": "^1.13.6",
+    "devtron": "1.4.0",
+    "less": "^3.0.4",
+    "less-loader": "^4.1.0",
+    "quasar-cli": "^0.16.0",
+    "ts-loader": "^4.3.1",
+    "typescript": "^2.9.1",
+    "vue-class-component": "^6.2.0"
+  },
+  "engines": {
+    "node": ">= 8.9.0",
+    "npm": ">= 5.6.0",
+    "yarn": ">= 1.6.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 10"
+  ]
+}

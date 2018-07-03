@@ -1,0 +1,25 @@
+{
+  "name": "cocker",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "example": "example"
+  },
+  "scripts": {
+    "build": "echo \"Error: no test specified\" && exit 1",
+    "publish": "node ./scripts/package-publish.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://117.36.75.166:3000/cocker/cocker.git"
+  },
+  "author": "cocker",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^2.15.1",
+    "minimist": "^1.2.0",
+    "shelljs": "^0.8.2",
+    "yargs": "^11.0.0"
+  }
+}
