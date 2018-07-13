@@ -20,7 +20,7 @@ export class RequestService {
    */
   public static setConfig({ server, timeout }) {
     RequestService.config.server = server
-    RequestService.config.server = timeout
+    RequestService.config.timeout = timeout
   }
 
   // 拦截器
