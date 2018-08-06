@@ -1,14 +1,13 @@
 {
   "name": "@cocker/core",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "publish": "publish-please",
+    "publish": "npm run publish-please",
     "prepublish": "publish-please guard && gulp patch",
     "prepublishOnly": "publish-please guard",
-    "publish-please": "publish-please"
   },
   "author": "",
   "license": "ISC",
