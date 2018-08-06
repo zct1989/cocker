@@ -7,12 +7,14 @@ export class ApplicationRouter {
   private applicationStore
   /**
    * 构造函数
-   * @param router 
-   * @param store 
-   * @param launch 
+   * @param router
+   * @param store
+   * @param launch
    */
   constructor({ router, store, launch }, applicationStore) {
+    // 系统存储
     this.applicationStore = applicationStore
+    // 应用存储
     this.store = store
     this.router = router
     this.launch = launch
