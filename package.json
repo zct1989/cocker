@@ -1,5 +1,5 @@
 {
-  "name": "@cocker/core",
+  "name": "@cocker/common",
   "version": "0.0.6",
   "description": "",
   "main": "index.js",
@@ -8,21 +8,6 @@
   },
   "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@types/webpack-env": "^1.13.6",
-    "axios": "^0.18.0",
-    "qs": "^6.5.2",
-    "rxjs": "^6.2.1",
-    "uuidjs": "^4.0.3",
-    "vue": "^2.5.16",
-    "vue-inject": "^2.1.0",
-    "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
-  },
-  "devDependencies": {
-    "@types/node": "^10.5.0",
-    "chalk": "^2.4.1",
-    "vue-class-component": "^6.2.0",
-    "webpack": "^4.14.0"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }
