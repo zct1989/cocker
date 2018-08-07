@@ -137,6 +137,7 @@ function updateVersion(importance) {
 
   // 升级模块版本号
   modules.forEach(module => {
+    console.log(version)
     gulp.src([`bundle/${module}/package.json`])
       .pipe(bump({ version: version }))
       .pipe(gulp.dest(`bundle/${module}`))
