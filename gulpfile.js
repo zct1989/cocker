@@ -9,7 +9,7 @@ const git = require('gulp-git')
 const bump = require('gulp-bump')
 const filter = require('gulp-filter')
 const tagVersion = require('gulp-tag-version');
-
+const through = require('through2');
 // 模块包列表
 const packages = {
   common: ts.createProject('packages/common/tsconfig.json'),
@@ -113,6 +113,7 @@ gulp.task('move', function () {
  * @param {*} importance 升级类型
  */
 function updateVersion(importance) {
+  let version
   let tag = {
     'patch': 'dev',
     'minor': 'latest',
@@ -126,14 +127,20 @@ function updateVersion(importance) {
   gulp.src('./package.json')
     .pipe(bump({ type: importance }))
     .pipe(gulp.dest('./'))
+    .pipe(
+      through.obj(function (file, encoding, next) {
+        let package = require(__dirname + '/package.json')
+        version = package.version
+        next(null, file);
+      }))
 
-  // 获取最新版本号
-  let package = require('./package.json')
+
+
 
   // 升级模块版本号
   modules.forEach(module => {
     gulp.src([`bundle/${module}/package.json`])
-      .pipe(bump({ version: package.version }))
+      .pipe(bump({ version: version }))
       .pipe(gulp.dest(`bundle/${module}`))
   })
 
