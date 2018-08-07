@@ -122,25 +122,25 @@ function updateVersion(importance) {
   // 修改待发布tag
   rewriteFile(updatePublishTag, tag, '.publishrc')
 
+  // 升级全局版本号
+  gulp.src('./package.json')
+    .pipe(bump({ type: importance }))
+    .pipe(gulp.dest('./'))
+
+  // 获取最新版本号
+  let package = require('./package.json')
+
+  // 升级模块版本号
   modules.forEach(module => {
-    gulp.src(['./package.json'])
-      // bump the version number in those files
-      .pipe(bump({ type: importance }))
-      // save it back to filesystem
+    gulp.src([`bundle/${module}/package.json`])
+      .pipe(bump({ version: package.version }))
       .pipe(gulp.dest(`bundle/${module}`))
   })
 
-  // get all the files to bump version in
+  // 生成版本tag
   return gulp.src('./package.json')
-    // bump the version number in those files
-    .pipe(bump({ type: importance }))
-    // save it back to filesystem
-    .pipe(gulp.dest('./'))
-    // commit the changed version number
     .pipe(git.commit('bumps package version'))
-    // read only one file to get the version number
     .pipe(filter('package.json'))
-    // **tag it in the repository**
     .pipe(tagVersion());
 }
 
