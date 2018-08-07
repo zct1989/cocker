@@ -150,11 +150,12 @@ function updateVersion(importance) {
  * @param {*} tag 
  * @param {*} targetFile 
  */
-function rewriteFile(replace, tag, targetFile) {
+function rewriteFile(replaceText, tag, targetFile) {
   //读取文件
   let text = fs.readFileSync(targetFile, "utf-8");
 
-  text = replace(text, tag) || text;
+  text = replaceText(text, tag) || text;
+  console.log(replaceText)
 
   try {
     fs.writeFileSync(targetFile, text);
