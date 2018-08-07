@@ -118,7 +118,6 @@ function updateVersion(importance) {
     'minor': 'latest',
     'major': 'latest'
   }[importance]
-  console.log(tag)
   // 修改待发布tag
   rewriteFile(updatePublishTag, tag, '.publishrc')
 
@@ -173,6 +172,7 @@ function rewriteFile(replace, tag, targetFile) {
  * 修改等待发布tag
  */
 function updatePublishTag(text, tag) {
+  console.log(text)
   return text.replace(/"publishTag":".*?"/g, `"publishTag":"${tag}"`)
 }
 
