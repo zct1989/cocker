@@ -172,7 +172,7 @@ function rewriteFile(replace, tag, targetFile) {
  * 修改等待发布tag
  */
 function updatePublishTag(text, tag) {
-  console.log(text)
+  console.log(11, text, 22)
   return text.replace(/"publishTag":".*?"/g, `"publishTag":"${tag}"`)
 }
 
