@@ -130,24 +130,23 @@ function updateVersion(importance) {
     .pipe(
       through.obj(function (file, encoding, next) {
         let package = require(__dirname + '/package.json')
-        version = package.version
-        console.log(version)
+        // 升级模块版本号
+        modules.forEach(module => {
+          gulp.src([`bundle/${module}/package.json`])
+            .pipe(bump({ version: package.version }))
+            .pipe(gulp.dest(`bundle/${module}`))
+        })
         next(null, file);
       }))
-
-  // 升级模块版本号
-  modules.forEach(module => {
-    console.log(version)
-    gulp.src([`bundle/${module}/package.json`])
-      .pipe(bump({ version: version }))
-      .pipe(gulp.dest(`bundle/${module}`))
-  })
-
-  // 生成版本tag
-  return gulp.src('./package.json')
-    .pipe(git.commit('bumps package version'))
-    .pipe(filter('package.json'))
-    .pipe(tagVersion());
+    .pipe(
+      through.obj(function (file, encoding, next) {
+        // 生成版本tag
+        gulp.src('./package.json')
+          .pipe(git.commit('bumps package version'))
+          .pipe(filter('package.json'))
+          .pipe(tagVersion());
+        next(null, file);
+      }))
 }
 
 /**
