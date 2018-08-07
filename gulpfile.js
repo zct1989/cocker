@@ -172,8 +172,6 @@ function updatePublishTag(text, tag) {
   return text.replace(/"publishTag": ".*?"/g, `"publishTag": "${tag}"`)
 }
 
-
-
 /**
  * 升级版本号(补丁版本)
  */

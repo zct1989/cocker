@@ -1,16 +1,17 @@
 {
-  "name": "@cocker/core",
-  "version": "0.0.33",
+  "name": "cocker",
+  "version": "0.0.20",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "gulp build",
     "build:dev": "gulp build:dev",
+    "patch": "gulp patch",
+    "minor": "gulp minor",
+    "major": "gulp major",
     "dev": "node scripts/run-dev.js",
-    "prepublish": "publish-please guard && gulp patch",
-    "prepublishOnly": "publish-please guard",
-    "publish-please": "publish-please"
+    "publish": "node scripts/run-publish.js"
   },
   "author": "",
   "license": "ISC",
