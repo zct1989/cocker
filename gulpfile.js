@@ -135,7 +135,7 @@ function updateVersion(importance) {
       }))
 
 
-
+  console.log(version)
 
   // 升级模块版本号
   modules.forEach(module => {
