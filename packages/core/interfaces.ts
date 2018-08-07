@@ -11,6 +11,7 @@ export interface ApplicationOption {
   router: VueRouter
   // vuex实例
   store: Store<any>
+  // 默认布局
   defaultLayout?: string
   bootstrap: {
     // 依赖注入全局提供器
