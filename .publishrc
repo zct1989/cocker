@@ -9,7 +9,7 @@
   },
   "confirm": true,
   "publishCommand": "npm publish",
-  "publishTag": "dev",
-  "prePublishScript": "npm run prepublish",
+  "publishTag": "latest",
+  "prePublishScript": "",
   "postPublishScript": ""
 }
