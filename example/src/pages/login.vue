@@ -1,44 +1,28 @@
 <template>
   <q-page class="page login row justify-center">
-      <div class="login-container column justify-center">
-          <q-field
-            label="邮箱"
-            error-label="请确认邮箱格式正确"
-            :error="$v.loginModel.email.$error"
-            :label-width="3"
-            :count="10">
-            <q-input 
-              @blur="$v.loginModel.email.$touch"
-              v-model="loginModel.email" />
-          </q-field>
-          <q-field
-              label="密码"
-              :label-width="3"
-              error-label="请确认密码格式正确"
-              :error="$v.loginModel.password.$error"
-              :count="10">
-              <q-input type="password" 
-                @blur="$v.loginModel.password.$touch"
-                v-model="loginModel.password"
-                clearable/>
-          </q-field>
-          <q-btn class="q-mt-md" label="登录" @click="onSubmit"/>
-      </div>
+    <div class="login-container column justify-center">
+      <q-field label="邮箱" error-label="请确认邮箱格式正确" :error="$v.loginModel.email.$error" :label-width="3" :count="10">
+        <q-input @blur="$v.loginModel.email.$touch" v-model="loginModel.email" />
+      </q-field>
+      <q-field label="密码" :label-width="3" error-label="请确认密码格式正确" :error="$v.loginModel.password.$error" :count="10">
+        <q-input type="password" @blur="$v.loginModel.password.$touch" v-model="loginModel.password" clearable/>
+      </q-field>
+      <q-btn class="q-mt-md" label="登录" @click="onSubmit" />
+    </div>
   </q-page>
 </template>
 
 <script lang="ts">
 import { required, email, minLength } from "vuelidate/lib/validators";
-import { Validations, Layout, Dependencies } from "~/core";
+import { Validations, Layout, Dependencies } from "@cocker/core";
 import Component from "vue-class-component";
 import Vue from "vue";
 import { UserService } from "~/services/user.service";
-import { RequestParams } from "~/core/http";
+import { RequestParams } from "@cocker/core/http";
 @Layout("DefaultLayout")
 @Component({})
 export default class Login extends Vue {
   @Dependencies(UserService) userService: UserService;
-
   @Validations({
     email: {
       required,
@@ -53,30 +37,29 @@ export default class Login extends Vue {
     email: "",
     password: ""
   };
-
   onSubmit() {
     this.$v.loginModel.$touch();
-
     if (this.$v.loginModel.$error) {
+      this.$router.push("module1/page1");
       // TODO: 更新登录信息
-      this.userService
-        .login(
-          new RequestParams({
-            username: "001",
-            password: "123"
-          })
-        )
-        .subscribe(() => {
-        });
+      // this.userService
+      //   .login(
+      //     new RequestParams({
+      //       username: "001",
+      //       password: "123"
+      //     })
+      //   )
+      //   .subscribe(() => {});
     }
   }
-
   mounted() {}
 }
 </script>
 
 <style lang="stylus" scoped>
-.login.page
-  .login-container
-    width: 300px
+.login.page {
+  .login-container {
+    width: 300px;
+  }
+}
 </style>

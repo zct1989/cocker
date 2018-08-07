@@ -1,5 +1,5 @@
 import { userController } from "~/config/server/user.controller"
-import { Request } from "~/core/http";
+import { Request } from "@cocker/core/http";
 import "reflect-metadata";
 import { Observable } from "rxjs";
 

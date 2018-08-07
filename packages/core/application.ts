@@ -1,10 +1,16 @@
 
 
 import Vue from 'vue'
+import Vuex from 'vuex'
+import VueRouter from 'vue-router'
 import App from './app'
+
+
+Vue.use(VueRouter)
+
 import { ApplicationOption } from './interfaces'
 import { ApplicationRouter } from './application_router'
-import { applicationStore } from './application_store'
+import { ApplicationStore } from './application_store'
 import injector from 'vue-inject'
 
 export default class Cocker {
@@ -17,8 +23,12 @@ export default class Cocker {
     // 进行全局混入
     this.mixins()
 
+    // 安装基础插件
+    Vue.use(Vuex)
+    Vue.use(VueRouter)
+
     // 注册路由扩展
-    this.router = new ApplicationRouter(options, applicationStore)
+    this.router = new ApplicationRouter(options, ApplicationStore.getStore())
 
     // 初始化框架
     this.bootstrap(options, () => {
@@ -44,7 +54,7 @@ export default class Cocker {
     Vue.use({
       install() {
         Vue.prototype.$cocker = {
-          state: applicationStore.state
+          state: ApplicationStore.getStore().state
         }
       }
     })

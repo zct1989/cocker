@@ -1,4 +1,4 @@
-module.exports = function (cfg) {
+export const install = function (cfg, root, config) {
   // 添加tx后缀名支持
   cfg.resolve.extensions.push('.ts')
   cfg.resolve.extensions.push('.tsx')
@@ -9,9 +9,9 @@ module.exports = function (cfg) {
     test: /\.tsx?$/,
     loader: 'ts-loader',
     exclude: /node_modules/,
-    options: {
+    options: Object.assign({
       // 自动将所有.vue文件转化为.vue.tsx文件
       appendTsSuffixTo: [/\.vue$/]
-    }
+    }, config)
   })
 }

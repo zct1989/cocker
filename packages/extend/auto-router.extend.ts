@@ -30,7 +30,7 @@ const getPageList = function () {
   return pageList
 }
 
-module.exports = function (cfg) {
+export const install = function (cfg, root, config) {
   let pages = getPageList()
 
   // 生成路由数据

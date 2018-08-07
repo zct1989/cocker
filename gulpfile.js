@@ -64,7 +64,7 @@ modules.forEach(module => {
         sourcemaps.mapSources(sourcePath => './' + sourcePath.split('/').pop())
       )
       .pipe(sourcemaps.write('.'))
-      .pipe(gulp.dest(`${dist}/${module}`));
+      .pipe(gulp.dest(`node_modules/@cocker/${module}`));
   });
 });
 
@@ -80,9 +80,16 @@ gulp.task('build:dev', function (cb) {
     modules
       .filter(module => module !== 'common')
       .map(module => module + ':dev'),
-    'copy:ts',
+    'move',
     cb
   );
+});
+
+
+gulp.task('move', function () {
+  let stream = gulp
+    .src(['node_modules/@cocker/**/*'])
+    .pipe(gulp.dest('example/node_modules/@cocker'));
 });
 
 function inc(importance) {

@@ -1,13 +1,14 @@
 // Configuration for your app
-const typescriptExtend = require('./src/core/extends/typescript.extend.js')
-const autoRouterExtend = require('./src/core/extends/auto-router.extend.js')
-const aliasExtend = require('./src/core/extends/alias.extend.js')
-const environmentExtend = require('./src/core/extends/environment.extend.js')
+const extend = require('@cocker/extend')
+const path = require('path')
+// const autoRouterExtend = require('./src/core/extends/auto-router.extend.js')
+// const aliasExtend = require('./src/core/extends/alias.extend.js')
+// const environmentExtend = require('./src/core/extends/environment.extend.js')
 
 module.exports = function (ctx) {
   return {
     sourceFiles: {
-      rootComponent: 'src/core/app.ts'
+      rootComponent: 'node_modules/@cocker/core/app.js'
     },
     // app plugins (/src/plugins)
     plugins: [
@@ -35,14 +36,7 @@ module.exports = function (ctx) {
       // analyze: true,
       // extractCSS: false,
       extendWebpack(cfg) {
-        // 环境扩展支持
-        environmentExtend(cfg)
-        // 别名扩展支持
-        aliasExtend(cfg)
-        // typescript扩展支持
-        typescriptExtend(cfg)
-        // 自动路由扩展支持
-        autoRouterExtend(cfg)
+        extend.install(cfg, __dirname)
       }
     },
     devServer: {

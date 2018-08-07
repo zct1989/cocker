@@ -3,6 +3,7 @@ import { createDecorator } from 'vue-class-component'
 import injector from 'vue-inject';
 import { empty } from 'rxjs';
 // import * as UUID from "uuidjs";
+
 /**
  * 组件内依赖注入
  * @param target
