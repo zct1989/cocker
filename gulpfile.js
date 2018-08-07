@@ -155,7 +155,7 @@ function rewriteFile(replaceText, tag, targetFile) {
   let text = fs.readFileSync(targetFile, "utf-8");
 
   text = replaceText(text, tag) || text;
-  console.log(333, replaceText)
+  console.log(333, text)
 
   try {
     fs.writeFileSync(targetFile, text);
