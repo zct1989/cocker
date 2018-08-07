@@ -113,13 +113,12 @@ gulp.task('move', function () {
  * @param {*} importance 升级类型
  */
 function updateVersion(importance) {
-
   let tag = {
     'patch': 'dev',
     'minor': 'latest',
     'major': 'latest'
   }[importance]
-
+  console.log(tag)
   // 修改待发布tag
   rewriteFile(updatePublishTag, tag, '.publishrc')
 
