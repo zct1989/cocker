@@ -131,11 +131,9 @@ function updateVersion(importance) {
       through.obj(function (file, encoding, next) {
         let package = require(__dirname + '/package.json')
         version = package.version
+        console.log(version)
         next(null, file);
       }))
-
-
-  console.log(version)
 
   // 升级模块版本号
   modules.forEach(module => {
