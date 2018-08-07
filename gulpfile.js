@@ -171,7 +171,7 @@ function rewriteFile(replaceText, tag, targetFile) {
  */
 function updatePublishTag(text, tag) {
   console.log(11, text, 22)
-  return text.replace(/"publishTag":".*?"/g, `"publishTag":"${tag}"`)
+  return text.replace(/\"publishTag\":\".*?\"/g, `"publishTag":"${tag}"`)
 }
 
 
