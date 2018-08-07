@@ -155,7 +155,6 @@ function rewriteFile(replaceText, tag, targetFile) {
   let text = fs.readFileSync(targetFile, "utf-8");
 
   text = replaceText(text, tag) || text;
-  console.log(333, text)
 
   try {
     fs.writeFileSync(targetFile, text);
@@ -170,8 +169,7 @@ function rewriteFile(replaceText, tag, targetFile) {
  * 修改等待发布tag
  */
 function updatePublishTag(text, tag) {
-  console.log(11, text, 22)
-  return text.replace(/\"publishTag\":\".*?\"/g, `"publishTag":"${tag}"`)
+  return text.replace(/"publishTag": ".*?"/g, `"publishTag": "${tag}"`)
 }
 
 
