@@ -118,6 +118,7 @@ function updateVersion(importance) {
     'minor': 'latest',
     'major': 'latest'
   }[importance]
+
   // 修改待发布tag
   rewriteFile(updatePublishTag, tag, '.publishrc')
 
@@ -151,19 +152,16 @@ function updateVersion(importance) {
  * @param {*} msg 
  */
 function rewriteFile(replace, tag, targetFile) {
-  return function (callback) {
-    //读取文件
-    let text = fs.readFileSync(file_url, "utf-8");
+  //读取文件
+  let text = fs.readFileSync(targetFile, "utf-8");
 
-    text = replace(text, tag) || text;
+  text = replace(text, tag) || text;
 
-    try {
-      fs.writeFileSync(targetFile, text);
-    } catch (ex) {
-      callback(true, ex.message);
-      return;
-    }
-    callback(null);
+  try {
+    fs.writeFileSync(targetFile, text);
+  } catch (ex) {
+    console.error(ex)
+    return;
   }
 }
 
