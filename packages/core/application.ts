@@ -54,6 +54,7 @@ export default class Cocker {
     Vue.use({
       install() {
         Vue.prototype.$cocker = {
+          store: ApplicationStore.getStore(),
           state: ApplicationStore.getStore().state
         }
       }

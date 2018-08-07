@@ -72,7 +72,7 @@ export class ApplicationRouter {
    */
   private layoutCheck(component) {
     if (component) {
-      let targetLayout = component['$layout'] || 'DefaultLayout'
+      let targetLayout = component['$layout'] || 'default'
       if (this.store.state.layout !== targetLayout) {
         this.store.commit('updateLayout', targetLayout )
       }

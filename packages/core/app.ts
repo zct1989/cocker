@@ -35,7 +35,7 @@ export default class App extends Vue {
   render(h, props) {
     // const loadingEl = h('nuxt-loading', { ref: 'loading' })
     // 创建布局元素
-    const layoutEl = h(this.$cocker.state.layout)
+    const layoutEl = h(this.$cocker.store.getters.layout)
     // 创建模板元素
     const templateEl = h('div', {
       domProps: {

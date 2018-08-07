@@ -21,7 +21,12 @@ export class ApplicationStore {
         // 系统准备状态
         ready: false,
         // 当前布局
-        layout: "DefaultLayout"
+        layout: "default"
+      },
+      getters: {
+        layout(state) {
+          return `${state.layout.replace(/^\S/, s => s.toUpperCase())}Layout`
+        }
       },
       mutations: {
         /**
