@@ -1,6 +1,6 @@
 {
   "name": "@cocker/core",
-  "version": "0.0.42",
+  "version": "0.0.20",
   "description": "",
   "main": "index.js",
   "scripts": {
