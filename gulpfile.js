@@ -145,11 +145,10 @@ function updateVersion(importance) {
 }
 
 /**
- * 
- * @param {*} type 
- * @param {*} fun 
- * @param {*} file_url 
- * @param {*} msg 
+ * 重写文件
+ * @param {*} replace 
+ * @param {*} tag 
+ * @param {*} targetFile 
  */
 function rewriteFile(replace, tag, targetFile) {
   //读取文件
