@@ -12,13 +12,6 @@ let extendSupport = {
   autoRouter
 }
 
-export const install = function (config, root) {
-  // 扩展webpack设置
-  extendWebpackContent(config, root)
-  // 扩展根组建设置
-  setRootComponent(config)
-}
-
 /**
  * 设置根组件
  * @param config 
@@ -47,3 +40,13 @@ function extendWebpackContent(config, root) {
   config.build.extendWebpack = extendWebpack
 }
 
+
+
+export const install = function (config, root) {
+  // 扩展webpack设置
+  extendWebpackContent(config, root)
+  // 扩展根组建设置
+  setRootComponent(config)
+  // 返回更新后的配置
+  return config
+}

@@ -1,6 +1,6 @@
 {
   "name": "@cocker/core",
-  "version": "0.0.22",
+  "version": "0.0.23",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -18,7 +18,10 @@
     "vue-inject": "^2.1.0",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
-    "vue-class-component": "^6.2.0"
+    "vue-class-component": "^6.2.0",
+    "ts-loader": "^4.3.1",
+    "typescript": "^3.0.1",
+    "reflect-metadata": "^0.1.12"
   },
   "devDependencies": {
     "@types/webpack-env": "^1.13.6",
@@ -30,8 +33,6 @@
     "less-loader": "^4.1.0",
     "publish-please": "^3.2.0",
     "quasar-cli": "^0.17.7",
-    "ts-loader": "^4.3.1",
-    "typescript": "^3.0.1",
     "webpack": "^4.14.0"
   }
 }
