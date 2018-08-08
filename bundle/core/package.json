@@ -17,7 +17,8 @@
     "vue": "^2.5.16",
     "vue-inject": "^2.1.0",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vue-class-component": "^6.2.0"
   },
   "devDependencies": {
     "@types/webpack-env": "^1.13.6",
@@ -31,7 +32,6 @@
     "quasar-cli": "^0.17.7",
     "ts-loader": "^4.3.1",
     "typescript": "^3.0.1",
-    "vue-class-component": "^6.2.0",
     "webpack": "^4.14.0"
   }
 }

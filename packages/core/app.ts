@@ -7,13 +7,17 @@ import Component from 'vue-class-component'
     // Vue.util.defineReactive(this, 'nuxt', this.$options.nuxt)
     // 动态加载布局文件
     let requireLayout = (): Array<any> => {
-      let req = require.context("src/layouts", false, /\.vue$/);
-      return (requireContext => requireContext.keys().map(requireContext))(
-        req
-      ).map((layout: any) => ({
-        name: layout.default.options.name,
-        component: layout.default
-      }));
+      try {
+        let req = require.context("src/layouts", false, /\.vue$/);
+        return (requireContext => requireContext.keys().map(requireContext))(
+          req
+        ).map((layout: any) => ({
+          name: layout.default.options.name,
+          component: layout.default
+        }));
+      } catch (ex) {
+        console.error("load layout has error")
+      }
     };
 
     // 导入动态组件
@@ -54,7 +58,7 @@ export default class App extends Vue {
 
     return h('div', {
       domProps: {
-        id: 'q-app'
+        id: 'q-app' //for check root #q-app
       }
     }, [
         // loadingEl,
