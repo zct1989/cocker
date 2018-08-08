@@ -40,6 +40,16 @@ function extendWebpackContent(config, root) {
   config.build.extendWebpack = extendWebpack
 }
 
+/**
+ * 设置路由模式
+ * @param config 
+ */
+function setVueRouterMode(config) {
+  if (config.build && !config.build.vueRouterMode) {
+    config.build.vueRouterMode = 'history'
+  }
+}
+
 
 
 export const install = function (config, root) {
@@ -47,6 +57,8 @@ export const install = function (config, root) {
   extendWebpackContent(config, root)
   // 扩展根组建设置
   setRootComponent(config)
+  // 设置路由模式
+  setVueRouterMode(config)
   // 返回更新后的配置
   return config
 }
