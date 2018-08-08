@@ -1,6 +1,6 @@
 {
   "name": "cocker",
-  "version": "0.0.20",
+  "version": "0.0.21",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/webpack-env": "^1.13.6",
     "axios": "^0.18.0",
     "qs": "^6.5.2",
     "rxjs": "^6.2.1",
@@ -27,8 +26,8 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
-    "@types/node": "^10.5.7",
     "@types/webpack-env": "^1.13.6",
+    "@types/node": "^10.5.7",
     "chalk": "^2.4.1",
     "del": "^3.0.0",
     "devtron": "1.4.0",
