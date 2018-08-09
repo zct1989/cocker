@@ -21,10 +21,10 @@
     "rxjs": "^6.2.1",
     "uuidjs": "^4.0.3",
     "vue": "^2.5.16",
+    "vue-class-component": "^6.2.0",
     "vue-inject": "^2.1.0",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1",
-    "vue-class-component": "^6.2.0"
+    "vuex": "^3.0.1"
   },
   "devDependencies": {
     "@types/webpack-env": "^1.13.6",
@@ -47,6 +47,10 @@
     "shelljs": "^0.8.2",
     "ts-loader": "^4.3.1",
     "typescript": "^3.0.1",
-    "webpack": "^4.14.0"
+    "webpack": "^4.14.0",
+    "fork-ts-checker-webpack-plugin": "^0.4.6",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.14.0",
+    "tslint-webpack-plugin": "^1.2.2"
   }
 }

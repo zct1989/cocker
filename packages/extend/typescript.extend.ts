@@ -1,3 +1,6 @@
+const TSLintPlugin = require('tslint-webpack-plugin');
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+
 export const install = function (cfg, root, config) {
   // 添加tx后缀名支持
   cfg.resolve.extensions.push('.ts')
@@ -11,7 +14,21 @@ export const install = function (cfg, root, config) {
     exclude: /node_modules/,
     options: Object.assign({
       // 自动将所有.vue文件转化为.vue.tsx文件
-      appendTsSuffixTo: [/\.vue$/]
+      appendTsSuffixTo: [/\.vue$/],
+      transpileOnly: true
     }, config)
   })
+  // 添加ts-lint支持
+  cfg.plugins.push(
+    new TSLintPlugin({
+      files: ['./src/**/*.ts']
+    })
+  )
+  // 添加ForkTsCheckerWebpackPlugin
+  cfg.plugins.push(
+    new ForkTsCheckerWebpackPlugin({
+      tslint: true,
+      vue: true
+    })
+  )
 }
