@@ -14,6 +14,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "reflect-metadata": "^0.1.12",
+    "tslint-config-standard": "^7.1.0",
     "uuidjs": "^4.0.3",
     "vue-inject": "^2.1.0",
     "vuelidate": "^0.7.4",

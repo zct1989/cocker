@@ -1,15 +1,7 @@
 // Configuration for your app
 const extend = require('@cocker/extend')
-const path = require('path')
-// const autoRouterExtend = require('./src/core/extends/auto-router.extend.js')
-// const aliasExtend = require('./src/core/extends/alias.extend.js')
-// const environmentExtend = require('./src/core/extends/environment.extend.js')
-
 module.exports = function (ctx) {
-  return {
-    sourceFiles: {
-      rootComponent: 'node_modules/@cocker/core/app.js'
-    },
+  let config = {
     // app plugins (/src/plugins)
     plugins: [
       'boot',
@@ -36,7 +28,6 @@ module.exports = function (ctx) {
       // analyze: true,
       // extractCSS: false,
       extendWebpack(cfg) {
-        extend.install(cfg, __dirname)
       }
     },
     devServer: {
@@ -145,4 +136,6 @@ module.exports = function (ctx) {
       }
     }
   }
+
+  return extend.install(config, __dirname)
 }

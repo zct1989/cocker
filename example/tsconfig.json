@@ -1,0 +1,36 @@
+{
+  "include": [
+    "typings/*.d.ts",
+    "src/**/*",
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": true,
+  "compilerOptions": {
+    "strict": true,
+    "target": "es5",
+    "noImplicitAny": false,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true,
+    "strictPropertyInitialization": false,
+    "strictFunctionTypes": false,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": [
+      "es2016",
+      "dom",
+      "es2017.object",
+      "es2018.promise"
+    ],
+    "baseUrl": ".",
+    "paths": {
+      "quasar": [
+        "node_modules/quasar-framework/dist/quasar.mat.esm.js"
+      ],
+      "~/*": [
+        "src/*"
+      ]
+    }
+  }
+}

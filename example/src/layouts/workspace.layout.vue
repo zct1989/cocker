@@ -58,9 +58,8 @@
 </template>
 
 <script lang="ts">
-import { openURL } from "quasar";
-
 import Component from "vue-class-component";
+import { openURL } from "quasar";
 import Vue from "vue";
 
 @Component({})

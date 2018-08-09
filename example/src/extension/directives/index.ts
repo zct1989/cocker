@@ -1,4 +1,2 @@
-import Vue from 'vue'
-
-export default ({ store }): Object => ({
+export default ({ store }): object => ({
 })

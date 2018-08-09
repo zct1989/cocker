@@ -1,6 +1,6 @@
 import { FilterService } from '~/utils/filter.service'
 
 
-export default function ({ store }): Object {
+export default function ({ store }): object {
   return FilterService
 }

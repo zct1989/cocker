@@ -13,16 +13,16 @@
 </template>
 
 <script lang="ts">
-import { required, email, minLength } from "vuelidate/lib/validators";
+import { email, minLength, required } from "vuelidate/lib/validators";
 import { Validations, Layout, Dependencies } from "@cocker/core";
 import Component from "vue-class-component";
 import Vue from "vue";
 import { UserService } from "~/services/user.service";
 import { RequestParams } from "@cocker/core/http";
-@Layout("DefaultLayout")
+@Layout("default")
 @Component({})
 export default class Login extends Vue {
-  @Dependencies(UserService) userService: UserService;
+  @Dependencies(UserService) private userService: UserService;
   @Validations({
     email: {
       required,
@@ -37,7 +37,7 @@ export default class Login extends Vue {
     email: "",
     password: ""
   };
-  onSubmit() {
+  private onSubmit() {
     this.$v.loginModel.$touch();
     if (this.$v.loginModel.$error) {
       this.$router.push("module1/page1");
@@ -52,7 +52,6 @@ export default class Login extends Vue {
       //   .subscribe(() => {});
     }
   }
-  mounted() {}
 }
 </script>
 

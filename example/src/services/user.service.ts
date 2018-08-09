@@ -7,7 +7,7 @@ function test() {
   Reflect.getMetadata('name', UserService);
 }
 
-interface test {
+interface ITest {
   data: any,
   options?: any,
   request?(optoin: any): Observable<any>
@@ -22,7 +22,7 @@ export class UserService {
   @Request({
     server: userController.login
   })
-  login(requestParams) {
+  public login(requestParams) {
     return requestParams.request()
   }
 }

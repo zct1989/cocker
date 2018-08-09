@@ -1,7 +1,6 @@
-import Vue from 'vue'
-
-import filterPlugin from './filter.plugin'
 import commonPlugin from './common.plugin'
+import filterPlugin from './filter.plugin'
+
 
 export default ({ store }) => ({
   commonPlugin,

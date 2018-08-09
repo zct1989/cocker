@@ -1,4 +1,4 @@
-const envConfig = __ENV_CONFIG__
+const envConfig = __ENV_CONFIG__;
 
 export default {
   server: envConfig.URL_SERVER,
@@ -7,5 +7,5 @@ export default {
     buildEnv: envConfig.BUILD_ENV,
     buildTime: envConfig.BUILD_TIME,
   },
-  timeout: 30000
+  timeout: 30000,
 }

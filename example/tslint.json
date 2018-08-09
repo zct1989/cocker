@@ -1,0 +1,29 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:latest",
+    "tslint-config-prettier"
+  ],
+  "jsRules": {},
+  "rules": {
+    "no-submodule-imports": [
+      true,
+      "~",
+      "vue",
+      "vuelidate/lib/validators",
+      "@cocker/core/http"
+    ],
+    "ordered-imports": false,
+    "no-implicit-dependencies": false,
+    "object-literal-sort-keys": false,
+    "eofline": false,
+    "no-trailing-whitespace": false,
+    "comment-format": false,
+    "quotemark": false,
+    "no-console": false,
+    "one-line": false,
+    "no-consecutive-blank-lines": false,
+    "curly": false
+  },
+  "rulesDirectory": []
+}
