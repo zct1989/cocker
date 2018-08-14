@@ -52,8 +52,9 @@ export default class Cocker {
 
     // 添加插件
     Vue.use({
-      install() {
+      install: () => {
         Vue.prototype.$cocker = {
+          router: this.router,
           store: ApplicationStore.getStore(),
           state: ApplicationStore.getStore().state
         }

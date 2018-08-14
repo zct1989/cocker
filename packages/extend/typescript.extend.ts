@@ -28,6 +28,7 @@ export const install = function (cfg, root, config) {
   cfg.plugins.push(
     new ForkTsCheckerWebpackPlugin({
       tslint: true,
+      workers: ForkTsCheckerWebpackPlugin.TWO_CPUS_FREE,
       vue: true
     })
   )

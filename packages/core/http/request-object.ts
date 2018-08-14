@@ -54,11 +54,11 @@ export class RequestObject {
       RequestService.getInstance().send(requestOption)
         .then((response) => {
           // 通讯结果正常
-          this.requestObserver.next()
+          this.requestObserver.next(response.data)
         })
         .catch((response) => {
           // 通讯结果异常
-          this.requestObserver.error();
+          this.requestObserver.error(response.data);
         })
         .finally(() => {
           // 重置通讯状态

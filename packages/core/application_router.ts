@@ -5,6 +5,7 @@ export class ApplicationRouter {
   private router: VueRouter
   private launch
   private applicationStore
+  private applicationRouterGuards = []
   /**
    * 构造函数
    * @param router
@@ -20,6 +21,7 @@ export class ApplicationRouter {
     this.launch = launch
 
     // 注册路由守卫
+    this.router.beforeEach(this.routerBeforeEach.bind(this))
     this.router.beforeResolve(this.routerBeforeResolve.bind(this))
     this.router.afterEach(this.routerAfterEach.bind(this))
 
@@ -27,10 +29,17 @@ export class ApplicationRouter {
     this.importAutoRoutes()
   }
 
+  //TODO:确定路由守卫实现方式
+  public static registerGuard(){
+
+  }
+
   /**
    * 前置路由守卫
+   * 负责系统初始化检测
+   * 负责登陆认证检测
    */
-  async routerBeforeResolve(to, from, next) {
+  private async routerBeforeEach(to, from, next) {
     if (this.applicationStore.state.ready !== true && this.launch) {
       await this.launch({
         store: this.store,
@@ -41,11 +50,23 @@ export class ApplicationRouter {
     next()
   }
 
+  /**
+   * 前置路由解析守卫
+   * TODO:负责页面权限认证
+   */
+  private async routerBeforeResolve(to, from, next) {
+    if (this.authCheck(to)) {
+      next()
+    } else {
+      next()
+    }
+  }
+
 
   /**
    * 后置路由守卫
    */
-  routerAfterEach(to, from) {
+  private routerAfterEach(to, from) {
     if (to.matched) {
       let component = this.getComponent(to.matched)
       //  布局检测
@@ -77,6 +98,14 @@ export class ApplicationRouter {
         this.applicationStore.commit('updateLayout', targetLayout )
       }
     }
+  }
+
+/**
+ * 布局监测
+ * @param component 
+ */
+  private authCheck(component) {
+    return true
   }
 
   private importAutoRoutes() {
