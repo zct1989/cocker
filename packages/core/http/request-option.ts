@@ -29,9 +29,9 @@ export class RequestOption {
       method: this.requestServer.type,
       headers: this.requestParams.options.header,
       // 获取post请求参数
-      data: this.getParamsByMethod(true),
+      data: this.getParamsByMethod(false),
       // 获取get请求参数
-      params: this.getParamsByMethod(false),
+      params: this.getParamsByMethod(true),
       // 序列化参数:用于GET请求
       paramsSerializer: (params) =>
         Qs.stringify(params, {

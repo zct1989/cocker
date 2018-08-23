@@ -2,13 +2,13 @@
  * 请求方法类型
  */
 export enum RequestMethod {
-  Get,
-  Post,
-  Put,
-  Delete,
-  Options,
-  Head,
-  Patch
+  Get = 'GET',
+  Post = 'POST',
+  Put = 'PUT',
+  Delete = 'DELETE',
+  Options = 'OPTIONS',
+  Head = 'HEAD',
+  Patch = 'PATCH'
 }
 
 
