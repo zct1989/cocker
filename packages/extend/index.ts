@@ -1,8 +1,8 @@
 
-const typescript = require('./typescript.extend')
-const alias = require('./alias.extend')
-const environment = require('./environment.extend')
-const autoRouter = require('./auto-router.extend')
+import typescript from './typescript.extend'
+import alias from './alias.extend'
+import environment from './environment.extend'
+import autoRouter from './auto-router.extend'
 
 // 支持列表
 let extendSupport = {
@@ -32,14 +32,14 @@ function extendWebpackContent(config, root) {
   // 支持SSR
   let extendWebpack = function (cfg, ssr) {
     Object.entries(extendSupport).forEach(([key, extend]) => {
-      // 开启SSR,并且符合扩展SSR模式
-      if (config.ssr && ssr && ((ssr.isServer && extend.ssr.isServer) || (ssr.isClient && extend.ssr.isClient))) {
+      // // 开启SSR,并且符合扩展SSR模式
+      // if (config.ssr && ssr && ((ssr.isServer && extend.ssr.server) || (ssr.isClient && extend.ssr.client))) {
+      //   extend.install(cfg, root)
+      // }
+      // // 未开启SSR
+      // if (!config.ssr) {
         extend.install(cfg, root)
-      }
-      // 未开启SSR
-      if (!config.ssr) {
-        extend.install(cfg, root)
-      }
+      // }
     })
 
     extendWebpackBase(...cfg)

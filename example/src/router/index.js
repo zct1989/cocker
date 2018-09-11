@@ -1,24 +1,22 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import createRoutes from './routes'
-// const pageRoutes = __ROUTES__
 
 Vue.use(VueRouter)
 
-const Router = new VueRouter({
-  /*
-   * NOTE! Change Vue Router mode from quasar.conf.js -> build -> vueRouterMode
-   *
-   * When going with "history" mode, please also make sure "build.publicPath"
-   * is set to something other than an empty string.
-   * Example: '/' instead of ''
-   */
+// DO NOT import the store here as you will receive it as
+// parameter in the default exported function:
 
-  // Leave as is and change from quasar.conf.js instead!
-  mode: process.env.VUE_ROUTER_MODE,
-  base: process.env.VUE_ROUTER_BASE,
-  scrollBehavior: () => ({ y: 0 }),
-  routes: createRoutes([])
-})
+export default function ({ store }) {
+  // IMPORTANT! Instantiate Router inside this function
 
-export default Router
+  const Router = new VueRouter({
+    scrollBehavior: () => ({ y: 0 }),
+    routes: createRoutes([]),
+    // Leave these as they are and change from quasar.conf.js instead!
+    mode: process.env.VUE_ROUTER_MODE,
+    base: process.env.VUE_ROUTER_BASE,
+  })
+
+  return Router
+}

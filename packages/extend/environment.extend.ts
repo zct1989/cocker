@@ -11,7 +11,7 @@ export default {
     server: false,
     client: true
   },
-  install: function (cfg, root, config ) {
+  install: function (cfg, root, config?) {
     let build_env
     let default_build_env = 'prod'
     let temp_env = {}

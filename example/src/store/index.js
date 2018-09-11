@@ -6,18 +6,17 @@ import commonModule from './common'
 
 Vue.use(Vuex)
 
-const store = new Vuex.Store({
-  // modules: {
-  //   example
-  // },
-  ...commonModule,
-  plugins: [
-    // 持久化存储插件
-    createPersistedState({
-      key: "vuex",
-      storage: localStorage
-    })
-  ]
-})
+export default function () {
+  const Store = new Vuex.Store({
+    ...commonModule,
+    plugins: [
+      // 持久化存储插件
+      createPersistedState({
+        key: "vuex",
+        storage: localStorage
+      })
+    ]
+  })
 
-export default store
+  return Store
+}

@@ -35,7 +35,7 @@ export default {
     server: true,
     client: true,
   },
-  install: function (cfg, root, config) {
+  install: function (cfg, root, config?) {
     let pages = getPageList()
 
     // 生成路由数据

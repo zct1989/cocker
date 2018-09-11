@@ -1,5 +1,6 @@
 // Configuration for your app
 const extend = require('@cocker/extend')
+
 module.exports = function (ctx) {
   let config = {
     // app plugins (/src/plugins)

@@ -6,7 +6,7 @@ export default {
     server: true,
     client: true
   },
-  install: function (cfg, root, config) {
+  install: function (cfg, root, config?) {
     // 添加tx后缀名支持
     cfg.resolve.extensions.push('.ts')
     cfg.resolve.extensions.push('.tsx')
