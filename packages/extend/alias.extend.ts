@@ -1,3 +1,9 @@
-export const install = function (cfg, alias = {}) {
-  cfg.resolve.alias['~'] = cfg.resolve.alias['src']
+export default {
+  ssr: {
+    server: true,
+    client: true
+  },
+  install: function (cfg) {
+    cfg.resolve.alias['~'] = cfg.resolve.alias['src']
+  }
 }

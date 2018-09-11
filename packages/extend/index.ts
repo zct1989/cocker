@@ -29,12 +29,20 @@ function setRootComponent(config) {
 function extendWebpackContent(config, root) {
   let extendWebpackBase = config.build.extendWebpack
 
-  let extendWebpack = function (cfg) {
+  // 支持SSR
+  let extendWebpack = function (cfg, ssr) {
     Object.entries(extendSupport).forEach(([key, extend]) => {
-      extend.install(cfg, root)
+      // 开启SSR,并且符合扩展SSR模式
+      if (config.ssr && ssr && ((ssr.isServer && extend.ssr.isServer) || (ssr.isClient && extend.ssr.isClient))) {
+        extend.install(cfg, root)
+      }
+      // 未开启SSR
+      if (!config.ssr) {
+        extend.install(cfg, root)
+      }
     })
 
-    extendWebpackBase(cfg)
+    extendWebpackBase(...cfg)
   }
 
   config.build.extendWebpack = extendWebpack

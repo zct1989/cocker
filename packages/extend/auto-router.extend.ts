@@ -30,28 +30,34 @@ const getPageList = function () {
   return pageList
 }
 
-export const install = function (cfg, root, config) {
-  let pages = getPageList()
+export default {
+  ssr: {
+    server: true,
+    client: true,
+  },
+  install: function (cfg, root, config) {
+    let pages = getPageList()
 
-  // 生成路由数据
-  // 暂不考虑嵌套路由
-  let routes = pages.map(path => {
-    let [target] = path.split('.')
-    let target_route = target.split('/')
+    // 生成路由数据
+    // 暂不考虑嵌套路由
+    let routes = pages.map(path => {
+      let [target] = path.split('.')
+      let target_route = target.split('/')
 
-    // 处理index结尾的文件
-    if (target_route[target_route.length - 1] === 'index') {
-      target_route.length = target_route.length - 1
-    }
+      // 处理index结尾的文件
+      if (target_route[target_route.length - 1] === 'index') {
+        target_route.length = target_route.length - 1
+      }
 
-    return {
-      routePath: `/${target_route.join('/')}`,
-      componentPath: path
-    }
-  })
+      return {
+        routePath: `/${target_route.join('/')}`,
+        componentPath: path
+      }
+    })
 
-  // 添加自定义常量插件
-  cfg.plugins.push(new webpack.DefinePlugin({
-    'process.env.ROUTERS': JSON.stringify(routes)
-  }))
-}
+    // 添加自定义常量插件
+    cfg.plugins.push(new webpack.DefinePlugin({
+      'process.env.ROUTERS': JSON.stringify(routes)
+    }))
+  }
+} 
