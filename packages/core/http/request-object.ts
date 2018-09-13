@@ -4,6 +4,7 @@ import { RequestOption } from './request-option'
 import { RequestServerConfig } from './interfaces'
 import { RequestState } from './enums'
 import { RequestService } from "./request-service";
+import { Model } from '../model'
 import * as UUID from "uuidjs";
 
 /**
@@ -21,6 +22,8 @@ export class RequestObject {
 
   // 请求服务对象
   public readonly requestServer: RequestServerConfig
+
+  private responseModel
 
   // 通讯状态
   private requestState: RequestState = RequestState.Ready
@@ -40,6 +43,14 @@ export class RequestObject {
   }
 
   /**
+   * 设置响应数据模型
+   * @param model 
+   */
+  public setResponseModel(model) {
+    this.responseModel = model
+  }
+
+  /**
    * 发送网络请求
    */
   public request(requestParams: RequestParams) {
@@ -53,8 +64,18 @@ export class RequestObject {
       // 发送网络请求
       RequestService.getInstance().send(requestOption)
         .then((response) => {
+          // 转换数据结构
+          let data
+
+          if (this.responseModel) {
+            data = new this.responseModel() as Model
+            data.translateTo(response.data)
+          } else {
+            data = response.data
+          }
+
           // 通讯结果正常
-          this.requestObserver.next(response.data)
+          this.requestObserver.next(data)
         })
         .catch((response) => {
           // 通讯结果异常

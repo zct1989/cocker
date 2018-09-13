@@ -2,6 +2,8 @@
 import { RequestExtendConfig } from './interfaces'
 import { RequestObject } from './request-object'
 import { RequestParamsOption } from './request-params-option'
+import { Model } from '../model'
+
 /**
  * 请求参数对象
  */
@@ -16,7 +18,7 @@ export class RequestParams {
    * @param options 
    */
   constructor(data, options?: RequestExtendConfig) {
-    this.data = data
+    this.data = data instanceof Model ? data.convert() : data
     this.options = new RequestParamsOption(options)
   }
 

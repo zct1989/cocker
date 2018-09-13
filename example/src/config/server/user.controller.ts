@@ -1,42 +1,44 @@
+import { RequestMethod } from '@cocker/core/http'
+
 export const userController = {
   login: {
-    controller: 'user',
+    controller: 'business-service/api/login',
     action: 'login',
-    type: 'POST'
+    type: RequestMethod.Post
   },
   register: {
     controller: 'user',
     action: 'register',
-    type: 'POST'
+    type: RequestMethod.Post
   },
   getUserList: {
     controller: 'user',
     action: 'getUserList',
-    type: 'GET'
+    type: RequestMethod.Get
   },
   updateUserState: {
     controller: 'user',
     action: 'updateUserState',
-    type: 'GET'
+    type: RequestMethod.Get
   },
   updateAdminState: {
     controller: 'user',
     action: 'updateAdminState',
-    type: 'GET'
+    type: RequestMethod.Get
   },
   resetPassword: {
     controller: 'user',
     action: 'resetPassword',
-    type: 'GET'
+    type: RequestMethod.Get
   },
   authUser: {
     controller: 'user',
     action: 'authUser',
-    type: 'GET'
+    type: RequestMethod.Get
   },
-  queryUser:{
+  queryUser: {
     controller: 'user',
     action: 'queryUser',
-    type: 'GET'
+    type: RequestMethod.Get
   }
 }

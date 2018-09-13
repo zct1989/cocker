@@ -2,7 +2,7 @@ import { userController } from "~/config/server/user.controller"
 import { Request } from "@cocker/core/http";
 import "reflect-metadata";
 import { Observable } from "rxjs";
-
+import { User } from '~/models/user'
 function test() {
   Reflect.getMetadata('name', UserService);
 }
@@ -20,9 +20,11 @@ export class UserService {
    * @param data 
    */
   @Request({
-    server: userController.login
+    server: userController.login,
+    model: User
   })
   public login(requestParams) {
-    return requestParams.request()
+    return requestParams
+    .request()
   }
 }

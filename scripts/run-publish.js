@@ -1,7 +1,7 @@
 const shelljs = require('shelljs')
 const path = require('path')
 let root = path.resolve(__dirname, '..')
-
+shelljs.exec("npm run build")
 shelljs.cp(".publishrc", "./bundle/common/")
 shelljs.cp(".publishrc", "./bundle/core/")
 shelljs.cp(".publishrc", "./bundle/extend/")

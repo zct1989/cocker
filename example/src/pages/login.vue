@@ -19,9 +19,11 @@ import Component from "vue-class-component";
 import Vue from "vue";
 import { UserService } from "~/services/user.service";
 import { RequestParams } from "@cocker/core/http";
+import { User } from "~/models/user";
 @Layout("default")
 @Component({})
 export default class Login extends Vue {
+  private user = new User();
   @Dependencies(UserService) private userService: UserService;
   @Validations({
     email: {
@@ -42,14 +44,9 @@ export default class Login extends Vue {
     if (this.$v.loginModel.$error) {
       this.$router.push("module1/page1");
       // TODO: 更新登录信息
-      // this.userService
-      //   .login(
-      //     new RequestParams({
-      //       username: "001",
-      //       password: "123"
-      //     })
-      //   )
-      //   .subscribe(() => {});
+      this.userService.login(new RequestParams(this.user)).subscribe(ddd => {
+        console.log("sd", ddd);
+      });
     }
   }
 }

@@ -1,12 +1,20 @@
 import { RequestObject } from './request-object'
 import { RequestParams } from './request-params'
+import { RequestServerConfig } from './interfaces'
+import { Model } from '../model'
 /**
  * 网络请求行为装饰器
  */
-export function Request({ server }) {
+export function Request({ server, model }: { server: RequestServerConfig, model: { prototype: Model } }) {
   return function (target, name, descriptor) {
     // 请求对象
     let requestObject = new RequestObject(server)
+
+    // 设置响应数据模型
+    if (model) {
+      requestObject.setResponseModel(model)
+    }
+
     // 存储历史方法
     var _value = descriptor.value;
 

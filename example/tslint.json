@@ -11,7 +11,8 @@
       "~",
       "vue",
       "vuelidate/lib/validators",
-      "@cocker/core/http"
+      "@cocker/core/http",
+      "@cocker/core/model"
     ],
     "ordered-imports": false,
     "no-implicit-dependencies": false,
