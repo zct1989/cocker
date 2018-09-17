@@ -9,10 +9,10 @@ export class RequestService {
   }
 
   // 生成URL地址拦截处理
-  public static getRequestUrl: () => string
+  public static getRequestUrl: (option: RequestOption) => string
 
   // 生成请求头拦截处理
-  public static getRequestHeader: () => Object
+  public static getRequestHeader: (option: RequestOption) => any
 
   /**
    * 设置网络请求基础配置
@@ -81,14 +81,15 @@ export class RequestService {
       options,
       // 扩展配置对象
       {
-        url: requestOption.getRequestUrl()
+        url: RequestService.getRequestUrl ? RequestService.getRequestUrl(requestOption) : requestOption.getRequestUrl(),
+        headers: RequestService.getRequestHeader ? RequestService.getRequestHeader(requestOption) : {}
       }
     ))
       .then((response) => {
         // 网络通讯正常
         // 无状态拦截器的情况下则返回通讯成功
         if (!RequestService.interceptors.status.defined) {
-          return response
+          return RequestService.interceptors.success.defined ? RequestService.interceptors.success.interceptor(response) : response
         }
 
         // 状态拦截器转换通讯状态

@@ -40,14 +40,16 @@ export default class Login extends Vue {
     password: ""
   };
   private onSubmit() {
-    this.$v.loginModel.$touch();
-    if (this.$v.loginModel.$error) {
-      this.$router.push("module1/page1");
+    // this.$v.loginModel.$touch();
+    // if (this.$v.loginModel.$error) {
+      // this.$router.push("module1/page1");
       // TODO: 更新登录信息
       this.userService.login(new RequestParams(this.user)).subscribe(ddd => {
         console.log("sd", ddd);
+      },err=>{
+        console.log(err)
       });
-    }
+    // }
   }
 }
 </script>

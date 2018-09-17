@@ -1,3 +1,3 @@
 module.exports = {
-  URL_SERVER: JSON.stringify('http://117.36.75.166:60004')
+  URL_SERVER: JSON.stringify('http://192.168.3.65:9001')
 }

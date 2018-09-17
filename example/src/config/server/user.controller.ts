@@ -2,7 +2,7 @@ import { RequestMethod } from '@cocker/core/http'
 
 export const userController = {
   login: {
-    controller: 'business-service/api/login',
+    controller: 'loginController',
     action: 'login',
     type: RequestMethod.Post
   },

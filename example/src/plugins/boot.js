@@ -14,9 +14,4 @@ export default async ({ app, store, router }) => {
       plugin: [],
     }
   })
-
-  RequestService.setConfig({
-    server: appConfig.server,
-    timeout: 3000
-  })
 }
