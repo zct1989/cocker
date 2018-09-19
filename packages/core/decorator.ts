@@ -98,3 +98,19 @@ export function Layout(layout: String) {
     return target;
   }
 }
+
+export function RouterGuard(option: { path?: RegExp }) {
+  return function (target, name, descriptor) {
+    var oldValue = descriptor.value;
+    let flag
+    descriptor.value = function ({ store, router }, { to, from, next }) {
+      if (option && option.path && option.path.test(to.path)) {
+        return oldValue.apply(target, arguments);
+      } else {
+        return () => true
+      }
+    };
+
+    return descriptor;
+  }
+}

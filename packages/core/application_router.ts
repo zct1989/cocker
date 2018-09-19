@@ -5,7 +5,7 @@ export class ApplicationRouter {
   private router: VueRouter
   private launch
   private applicationStore
-  private applicationRouterGuards = []
+  private static guards = []
   /**
    * 构造函数
    * @param router
@@ -29,9 +29,12 @@ export class ApplicationRouter {
     this.importAutoRoutes()
   }
 
-  //TODO:确定路由守卫实现方式
-  public static registerGuard(){
-
+  /**
+   * 注册路由守卫
+   * @param guards 
+   */
+  public static registerGuard(guards) {
+    ApplicationRouter.guards = [...ApplicationRouter.guards, ...guards]
   }
 
   /**
@@ -52,14 +55,34 @@ export class ApplicationRouter {
 
   /**
    * 前置路由解析守卫
-   * TODO:负责页面权限认证
    */
   private async routerBeforeResolve(to, from, next) {
-    if (this.authCheck(to)) {
-      next()
-    } else {
-      next()
+    const guards = ApplicationRouter.guards as Array<Function>
+    // 无路由守卫直接通过
+    if (!guards && ApplicationRouter.guards.length == 0) {
+      return next()
     }
+
+    // 执行所有守卫
+    for (let i = 0; i < guards.length; i++) {
+      let guard = guards[i]
+
+      // 执行守卫
+      let result = await guard({
+        store: this.store,
+        router: this.router
+      }, {
+          to, from, next
+        }
+      )
+
+      if (result !== undefined || result !== true) {
+        next(result)
+        break
+      }
+    }
+
+    return next()
   }
 
 
@@ -100,10 +123,10 @@ export class ApplicationRouter {
     }
   }
 
-/**
- * 布局监测
- * @param component 
- */
+  /**
+   * 布局监测
+   * @param component 
+   */
   private authCheck(component) {
     return true
   }
