@@ -99,16 +99,28 @@ export function Layout(layout: String) {
   }
 }
 
-export function RouterGuard(option: { path?: RegExp }) {
+/**
+ * 路由守卫
+ * @param option 
+ */
+export function RouterGuard(option: { path?: RegExp | Function }) {
   return function (target, name, descriptor) {
     var oldValue = descriptor.value;
     let flag
     descriptor.value = function ({ store, router }, { to, from, next }) {
-      if (option && option.path && option.path.test(to.path)) {
-        return oldValue.apply(target, arguments);
-      } else {
+      if (!option || !option.path) {
         return () => true
       }
+
+      if (option.path instanceof RegExp && option.path.test(to.path)) {
+        return oldValue.apply(target, arguments);
+      }
+
+      if (option.path instanceof Function && option.path(to.path)) {
+        return oldValue.apply(target, arguments);
+      }
+
+      return () => true
     };
 
     return descriptor;
